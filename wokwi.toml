@@ -1,4 +1,7 @@
 [wokwi]
 version = 1
-firmware = 'build/debug/test/mpr121/test_mpr121.uf2'
-rfc2217ServerPort = 4000
+firmware = 'build/apps/main.uf2'
+rfc2217ServerPort = 5004
+
+[serial]
+tcp = 5004

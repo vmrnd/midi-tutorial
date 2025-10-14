@@ -1,1 +1,1 @@
-add_subdirectory(mpr121)
+add_subdirectory(midi)

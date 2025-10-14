@@ -62,3 +62,9 @@ CMakePresets.json
 
 # DS Store
 .DS_Store
+
+# Python
+env/
+
+# SoundFont files
+*.sf2

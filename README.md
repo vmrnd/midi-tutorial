@@ -1,12 +1,8 @@
-# Pico Template
+# MIDI Tutorial
 
 ## Submodules
 
 ```zsh
-git submodule add https://github.com/raspberrypi/pico-sdk extern/pico-sdk
-git submodule update --init --recursive
-
-git submodule add https://github.com/ThrowTheSwitch/Unity.git extern/unity_cmake/unity
 git submodule update --init --recursive
 ```
 
@@ -26,7 +22,47 @@ brew install picotool
 rm -rf build
 ```
 
-## Build
+## Configure and Build
+
+Sample CMakePresets.json
+
+```json
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 13,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "debug",
+      "hidden": false,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "description": "Debug build for RP2040",
+      "cacheVariables": {
+        "PICO_PLATFORM": "rp2040",
+        "PICO_BOARD": "pico",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "TRUE",
+        "CMAKE_C_COMPILER": "/opt/homebrew/bin/arm-none-eabi-gcc",
+        "CMAKE_CXX_COMPILER": "/opt/homebrew/bin/arm-none-eabi-g++"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "description": "Build main target",
+      "displayName": "Build",
+      "configurePreset": "debug",
+      "configuration": "Debug",
+      "targets": ["main"]
+    }
+  ]
+}
+```
 
 ```zsh
 cmake --preset debug
@@ -36,7 +72,16 @@ cmake --build --preset debug
 ## Flash
 
 ```zsh
-picotool load build/waveshare-debug/hello_world.uf2
+picotool load build/apps/main.uf2
+```
+
+## Python and FluidSynth
+
+Create and activate a virtual environment:
+
+```zsh
+pip install -r requirements.txt
+python scripts/script.py
 ```
 
 ## Simulator
