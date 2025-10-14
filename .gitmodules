@@ -1,0 +1,6 @@
+[submodule "extern/pico-sdk"]
+	path = extern/pico-sdk
+	url = https://github.com/raspberrypi/pico-sdk.git
+[submodule "extern/unity_cmake/unity"]
+	path = extern/unity_cmake/unity
+	url = https://github.com/ThrowTheSwitch/Unity.git
