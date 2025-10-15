@@ -1,5 +1,7 @@
 # MIDI Tutorial
 
+https://learn.sparkfun.com/tutorials/midi-tutorial/all
+
 ## Submodules
 
 ```zsh
